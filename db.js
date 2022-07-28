@@ -1,5 +1,10 @@
 import mongoose from "mongoose";
+import dotenv from 'dotenv';
 
-mongoose.connect('mongodb://127.0.0.1/user');
+dotenv.config()
+
+const DB_URI = process.env.DB_URI;
+
+mongoose.connect(DB_URI);
 
 export default mongoose;
