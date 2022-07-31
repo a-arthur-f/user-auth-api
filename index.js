@@ -3,7 +3,7 @@ import http from "http";
 import db from "./db.js";
 import router from "./routes.js";
 import dotenv from "dotenv";
-import { authErrors } from "./middlewares/user.errors.js";
+import errorHandler from "./middlewares/errorHandler.js";
 
 dotenv.config();
 
@@ -13,7 +13,7 @@ const PORT = process.env.PORT;
 
 app.use(express.json());
 app.use(router);
-app.use(authErrors);
+app.use(errorHandler);
 
 db.connection.on("connecting", () => console.log("Connecting to database..."));
 db.connection.on("error", () => console.log("Connection failed"));
