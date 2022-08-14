@@ -4,6 +4,7 @@ import db from "./db.js";
 import router from "./routes.js";
 import dotenv from "dotenv";
 import errorHandler from "./middlewares/errorHandler.js";
+import cors from "cors";
 
 dotenv.config();
 
@@ -11,6 +12,7 @@ const app = express();
 const server = http.createServer(app);
 const PORT = process.env.PORT;
 
+app.use(cors());
 app.use(express.json());
 app.use(router);
 app.use(errorHandler);
