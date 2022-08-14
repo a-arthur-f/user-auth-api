@@ -14,10 +14,9 @@ export const login = async (req, res, next) => {
     const isPassword = await bcrypt.compare(password, findUser.password);
     if (!isPassword) return next("invalid username or password");
 
-    const { username, email } = findUser;
-    jwt.sign({ username, email }, process.env.SECRET, (err, token) => {
+    const { _id, username, email } = findUser;
+    jwt.sign({ id: _id, username, email }, process.env.SECRET, (err, token) => {
       if (err) return next("JWT creation failed");
-
       return res.status(200).json({ token });
     });
   } catch (e) {
