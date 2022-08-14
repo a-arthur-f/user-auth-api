@@ -1,7 +1,10 @@
 import jwt from "jsonwebtoken";
 
 export const authorization = (req, res, next) => {
-  const [type, token] = req.get("Authorization").split(" ");
+  const [type, token] = req.get("Authorization")
+    ? req.get("Authorization").split(" ")
+    : [];
+
   if (type !== "Bearer")
     return res.status(403).json({ errors: ["invalid authorization header"] });
 
