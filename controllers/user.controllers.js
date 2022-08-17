@@ -17,7 +17,7 @@ const userController = {
     }
   },
 
-  async post(req, res, next) {
+  async create(req, res, next) {
     const { username, password, email } = req.body;
 
     try {
@@ -38,7 +38,7 @@ const userController = {
     }
   },
 
-  async put(req, res, next) {
+  async update(req, res, next) {
     const { id } = req.params;
     const { email, username } = req.body;
 
